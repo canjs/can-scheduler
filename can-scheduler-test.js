@@ -6,7 +6,7 @@ QUnit.module('can-scheduler');
 
 var createElement = document.createElement.bind(document);
 
-QUnit.test("child listener never called because it was torn down correctly", function(){
+QUnit.test("child listener never called because it was torn down correctly", function(assert) {
 
 	var outer = createElement("div"),
 		inner = createElement("div"),
@@ -41,7 +41,7 @@ QUnit.test("child listener never called because it was torn down correctly", fun
 	outerEvent();
 	scheduler.batch.stop();
 
-	QUnit.deepEqual(callbacks,[
+	assert.deepEqual(callbacks,[
 		"outer-event"
 	], "callbacks right");
 });
